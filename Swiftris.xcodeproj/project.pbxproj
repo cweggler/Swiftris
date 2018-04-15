@@ -22,6 +22,7 @@
 		468D9CCB208035ED00ACAF89 /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 468D9CC6208035ED00ACAF89 /* theme.mp3 */; };
 		468D9CCC208035ED00ACAF89 /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 468D9CC7208035ED00ACAF89 /* bomb.mp3 */; };
 		468D9CD22080379400ACAF89 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 468D9CD12080379300ACAF89 /* Sprites.atlas */; };
+		468D9CD62082769200ACAF89 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468D9CD52082769200ACAF89 /* Array2D.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		468D9CC6208035ED00ACAF89 /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme.mp3; sourceTree = "<group>"; };
 		468D9CC7208035ED00ACAF89 /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bomb.mp3; sourceTree = "<group>"; };
 		468D9CD12080379300ACAF89 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		468D9CD52082769200ACAF89 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				468D9C9B2080301F00ACAF89 /* Assets.xcassets */,
 				468D9C9D2080301F00ACAF89 /* LaunchScreen.storyboard */,
 				468D9CA02080301F00ACAF89 /* Info.plist */,
+				468D9CD52082769200ACAF89 /* Array2D.swift */,
 			);
 			path = Swiftris;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				468D9C952080301500ACAF89 /* GameScene.swift in Sources */,
+				468D9CD62082769200ACAF89 /* Array2D.swift in Sources */,
 				468D9C972080301500ACAF89 /* GameViewController.swift in Sources */,
 				468D9C8F2080301400ACAF89 /* AppDelegate.swift in Sources */,
 			);
