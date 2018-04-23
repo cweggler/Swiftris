@@ -44,3 +44,41 @@ enum BlockColor: Int, CustomStringConvertible{
         return BlockColor(rawValue: Int(arc4random_uniform(NumberOfColors)))!
     }
 }
+
+// Hashable allows us to store Block in the Array 2D
+class Block: Hashable, CustomStringConvertible {
+    
+    // Constants
+    let color: BlockColor
+    
+    // Properties
+    var column: Int
+    var row: Int
+    var sprite: SKSpriteNode?
+    
+    /* This shortens the call of block.color.spriteName to block.spriteName */
+    var spriteName: String {
+        return color.spriteName
+    }
+    
+    // Fulfilling the Hashable protocol
+    var hashValue: Int {
+        return self.column ^ self.row
+    }
+    
+    // Fulfilling the CustomStringConvertible protocol
+    var description: String {
+        return "\(color): [\(column), \(row)]"
+    }
+    
+    // Initializes the class
+    init(column:Int, row:Int, color:BlockColor){
+        self.column = column
+        self.row = row
+        self.color = color
+    }
+    
+    static func == (lhs: Block, rhs: Block) -> Bool {
+        return lhs.column == rhs.column && lhs.row == rhs.row && lhs.color.rawValue == rhs.color.rawValue
+    }
+}
