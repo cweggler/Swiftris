@@ -24,6 +24,7 @@
 		468D9CD22080379400ACAF89 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 468D9CD12080379300ACAF89 /* Sprites.atlas */; };
 		468D9CD62082769200ACAF89 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468D9CD52082769200ACAF89 /* Array2D.swift */; };
 		46C32911208D08FB0098AA68 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C32910208D08FA0098AA68 /* Block.swift */; };
+		46C32913208EA2530098AA68 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C32912208EA2530098AA68 /* Shape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		468D9CD12080379300ACAF89 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
 		468D9CD52082769200ACAF89 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		46C32910208D08FA0098AA68 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		46C32912208EA2530098AA68 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				468D9C942080301500ACAF89 /* GameScene.swift */,
 				46C32910208D08FA0098AA68 /* Block.swift */,
 				468D9C962080301500ACAF89 /* GameViewController.swift */,
+				46C32912208EA2530098AA68 /* Shape.swift */,
 				468D9C982080301500ACAF89 /* Main.storyboard */,
 				468D9CD12080379300ACAF89 /* Sprites.atlas */,
 				468D9CC2208035ED00ACAF89 /* Sounds */,
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				468D9C952080301500ACAF89 /* GameScene.swift in Sources */,
+				46C32913208EA2530098AA68 /* Shape.swift in Sources */,
 				468D9CD62082769200ACAF89 /* Array2D.swift in Sources */,
 				46C32911208D08FB0098AA68 /* Block.swift in Sources */,
 				468D9C972080301500ACAF89 /* GameViewController.swift in Sources */,
