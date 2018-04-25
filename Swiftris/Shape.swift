@@ -93,6 +93,13 @@ class Shape: Hashable, CustomStringConvertible {
         return [:]
     }
     
+    var bottomBlocks:Array<Block> {
+        guard let bottomBlocks = bottomBlocksForOrientations[orientation] else{
+                return []
+        }
+        return bottomBlocks
+    }
+    
     
     
 }
