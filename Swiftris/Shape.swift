@@ -124,5 +124,29 @@ class Shape: Hashable, CustomStringConvertible {
         initializeBlocks()
     }
     
+    // Set up a convenience initializer to simplify the process
+    // Also calls an orientation and color at random which we want
+    convenience init(column:Int, row:Int) {
+        self.init(column:column, row:row, color: BlockColor.random(), orientation:Orientation.random())
+    }
     
+    // This function cannot be overridden by subclasses
+    
+    final func initializeBlocks(){
+        guard let blockRowColumnTranslations = blockRowColumnPositions[orientation] else {
+                return
+        }
+        
+        blocks = blockRowColumnTranslations.map {(diff) -> Block in
+            return Block(column: column + diff.columnDiff, row: row + diff.rowDiff, color: color)
+        }
+    }
 }
+
+// Have to create a custom "=" operator to fulfill
+// the Hashable protocol
+func ==(lhs: Shape, rhs: Shape) -> Bool{
+    return lhs.row == rhs.row && lhs.column == rhs.column
+}
+
+

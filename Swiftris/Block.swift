@@ -77,8 +77,8 @@ class Block: Hashable, CustomStringConvertible {
         self.row = row
         self.color = color
     }
-    
-    static func == (lhs: Block, rhs: Block) -> Bool {
-        return lhs.column == rhs.column && lhs.row == rhs.row && lhs.color.rawValue == rhs.color.rawValue
-    }
+}
+
+func == (lhs: Block, rhs: Block) -> Bool {
+    return lhs.column == rhs.column && lhs.row == rhs.row && lhs.color.rawValue == rhs.color.rawValue
 }
