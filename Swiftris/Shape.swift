@@ -100,6 +100,29 @@ class Shape: Hashable, CustomStringConvertible {
         return bottomBlocks
     }
     
+    // Hashable
+    
+    var hashValue: Int {
+        
+        return blocks.reduce(0) { $0.hashValue ^ $1.hashValue}
+    }
+    
+    // CustomStringConvertible
+    
+    var description: String {
+        
+        return "\(color) block facing \(orientation): \(blocks[FirstBlockIdx]), \(blocks[SecondBlockIdx]), \(blocks[ThirdBlockIdx]), \(blocks[FourthBlockIdx])"
+    }
+    
+    // Initializes our Shape Class
+    init(column: Int, row: Int, color: BlockColor, orientation: Orientation){
+        
+        self.color = color
+        self.column = column
+        self.row = row
+        self.orientation = orientation
+        initializeBlocks()
+    }
     
     
 }
