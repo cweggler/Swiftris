@@ -31,7 +31,25 @@ enum Orientation: Int, CustomStringConvertible {
         }
     }
     
+    // Created a function named random that chooses an
+    // orientation at random to start with!
     static func random() -> Orientation {
         return Orientation(rawValue: Int(arc4random_uniform(NumOrientations)))!
+    }
+    
+    // This determines how the block is going to move across the
+    // screen
+    static func rotate(orientation:Orientation, clockwise: Bool) -> Orientation {
+        
+        var rotated = orientation.rawValue + (clockwise ? 1 : -1 )
+        
+        if rotated > Orientation.TwoSeventy.rawValue{
+            rotated = Orientation.Zero.rawValue
+        }
+        else if rotated < 0 {
+            rotated = Orientation.TwoSeventy.rawValue
+        }
+        
+        return Orientation(rawValue: rotated)!
     }
 }
