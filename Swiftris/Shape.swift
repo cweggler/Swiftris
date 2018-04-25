@@ -53,3 +53,46 @@ enum Orientation: Int, CustomStringConvertible {
         return Orientation(rawValue: rotated)!
     }
 }
+
+// number of total shape varieties
+let NumShapeTypes: UInt32 = 7
+
+// Shape Indices
+let FirstBlockIdx: Int = 0
+let SecondBlockIdx: Int = 1
+let ThirdBlockIdx: Int = 2
+let FourthBlockIdx: Int = 3
+
+/* Creating the Shape class and extending the 2 protocols
+Hashable and CustomStringConvertible */
+class Shape: Hashable, CustomStringConvertible {
+    
+    // The color of the shape
+    let color: BlockColor
+    
+    // The blocks comprising of the shape
+    var blocks = Array<Block>()
+    
+    // The current orientation of the shape
+    var orientation: Orientation
+    
+    // The column and row representing the shape's anchor point
+    // This will be important for how the shape will move
+    var column, row: Int
+    
+    
+    // Required Overrides
+    
+    // Subclasses must override these properties
+    // Notice these require a return of a dictionary
+    var blockRowColumnPositions: [Orientation: Array<(columnDiff: Int, rowDiff: Int)>]{
+        return [:]
+    }
+    
+    var bottomBlocksForOrientations: [Orientation: Array<Block>]{
+        return [:]
+    }
+    
+    
+    
+}
