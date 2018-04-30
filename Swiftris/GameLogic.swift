@@ -15,10 +15,33 @@ let StartingRow = 0
 let PreviewColumn = 12
 let PreviewRow = 1
 
+protocol GameLogicDelegate {
+    
+    // Invoked when the current round ends
+    func gameDidEnd(swiftris: GameLogic)
+    
+    // Invoked after a new game has begun
+    func gameDidBegin(swiftris: GameLogic)
+    
+    // Invoked when the falling shape has become part of the game board
+    func gameShapeDidLand(swiftris: GameLogic)
+    
+    // Invoked when the falling shape has changed its location
+    func gameShapeDidMove(swiftris: GameLogic)
+    
+    // Invoked when the falling shape has changed its location after
+    // being dropped
+    func gameShapeDidDrop(swiftris: GameLogic)
+    
+    // Invoked when the game has reached a new level
+    func gameDidLevelUp(swiftris: GameLogic)
+}
+
 class GameLogic {
     var blockArray: Array2D<Block>
     var nextShape: Shape?
     var fallingShape: Shape?
+    var delegate: GameLogicDelegate?
     
     init() {
         fallingShape = nil
