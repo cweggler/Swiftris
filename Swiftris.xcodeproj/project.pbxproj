@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		461645802097825D00FBB4BA /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4616457F2097825D00FBB4BA /* GameLogic.swift */; };
 		468D9C8F2080301400ACAF89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468D9C8E2080301400ACAF89 /* AppDelegate.swift */; };
 		468D9C932080301500ACAF89 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 468D9C922080301500ACAF89 /* Actions.sks */; };
 		468D9C952080301500ACAF89 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468D9C942080301500ACAF89 /* GameScene.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4616457F2097825D00FBB4BA /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		468D9C8B2080301400ACAF89 /* Swiftris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		468D9C8E2080301400ACAF89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		468D9C922080301500ACAF89 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				46C32910208D08FA0098AA68 /* Block.swift */,
 				468D9C962080301500ACAF89 /* GameViewController.swift */,
 				46C32912208EA2530098AA68 /* Shape.swift */,
+				4616457F2097825D00FBB4BA /* GameLogic.swift */,
 				46C3291420901B410098AA68 /* SquareShape.swift */,
 				46A0E319209028C2002D31D7 /* LineShape.swift */,
 				46C3291620901F070098AA68 /* TShape.swift */,
@@ -331,6 +334,7 @@
 				468D9CD62082769200ACAF89 /* Array2D.swift in Sources */,
 				46A0E31A209028C2002D31D7 /* LineShape.swift in Sources */,
 				46A0E31C209028D1002D31D7 /* SShape.swift in Sources */,
+				461645802097825D00FBB4BA /* GameLogic.swift in Sources */,
 				46C3291720901F070098AA68 /* TShape.swift in Sources */,
 				46C32911208D08FB0098AA68 /* Block.swift in Sources */,
 				46A0E320209028FC002D31D7 /* LShape.swift in Sources */,
