@@ -23,7 +23,7 @@ class GameScene: SKScene {
     
     var textureCache = Dictionary<String, SKTexture>()
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("NSCoder not supported")
     }
     
@@ -63,7 +63,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        guard let lastTick = lastTick else{
+        guard let lastTick = lastTick else {
             return
         }
         
@@ -105,7 +105,7 @@ class GameScene: SKScene {
     
     func pointforColumn(column: Int, row: Int) -> CGPoint {
         let x = LayerPosition.x + (CGFloat(column) * BlockSize) + (BlockSize / 2)
-        let y = LayerPosition.y + (CGFloat(row) * BlockSize) + (BlockSize / 2)
+        let y = LayerPosition.y - ((CGFloat(row) * BlockSize) + (BlockSize / 2))
         return CGPoint(x: x, y: y)
     }
     
