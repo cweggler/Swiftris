@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, GameLogicDelegate {
+class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecognizerDelegate {
     var scene: GameScene!
     var swiftris: GameLogic!
 
@@ -40,7 +40,7 @@ class GameViewController: UIViewController, GameLogicDelegate {
     }
     
     @IBAction func didTap(_ sender: UITapGestureRecognizer) {
-        
+        swiftris.rotateShape()
     }
     
     func didTick() {
