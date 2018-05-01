@@ -12,6 +12,8 @@ import SpriteKit
 class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecognizerDelegate {
     var scene: GameScene!
     var swiftris: GameLogic!
+    
+    var panPointReference: CGPoint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,26 @@ class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecogniz
         swiftris.rotateShape()
     }
     
+    @IBAction func didPan(_ sender: UIPanGestureRecognizer) {
+        
+        let currentPoint = sender.translation(in: self.view)
+        
+        if let originalPoint = panPointReference {
+            
+            if abs(currentPoint.x - originalPoint.x) > (BlockSize * 0.9) {
+                
+                if sender.velocity(in: self.view).x > CGFloat(0) {
+                    swiftris.moveShapeRight()
+                    panPointReference = currentPoint
+                } else {
+                    swiftris.moveShapeLeft()
+                    panPointReference = currentPoint
+                }
+              }
+        } else if sender.state == .began {
+            panPointReference = currentPoint
+        }
+    }
     func didTick() {
         swiftris.letShapeFall()
         scene.redrawShape(shape: swiftris.fallingShape!, completion: {})

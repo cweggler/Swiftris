@@ -22,6 +22,7 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="qtI-iJ-ujz" appends="YES" id="5gE-t1-7Sf"/>
+                            <outletCollection property="gestureRecognizers" destination="EAA-AO-C2O" appends="YES" id="p1b-gy-Txv"/>
                         </connections>
                     </view>
                 </viewController>
@@ -32,6 +33,12 @@
                         <outlet property="delegate" destination="BV1-FR-VrT" id="YVP-ui-Ib8"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="EAA-AO-C2O">
+                    <connections>
+                        <action selector="didPan:" destination="BV1-FR-VrT" id="3U6-QF-Hxu"/>
+                        <outlet property="delegate" destination="BV1-FR-VrT" id="89J-ZP-ADS"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
         </scene>
     </scenes>
