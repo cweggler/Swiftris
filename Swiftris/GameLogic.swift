@@ -53,6 +53,8 @@ class GameLogic {
         if (nextShape == nil){
             nextShape = Shape.random(startingColumn: PreviewColumn, startingRow: PreviewRow)
         }
+        
+        delegate?.gameDidBegin(swiftris: self)
     }
     
     func newShape() -> (fallingShape: Shape?, nextShape: Shape?) {
@@ -60,7 +62,31 @@ class GameLogic {
         nextShape = Shape.random(startingColumn: PreviewColumn, startingRow: PreviewRow)
         fallingShape?.moveTo(column: StartingColumn, row: StartingRow)
         
+        guard detectIllegalPlacement() == false else {
+            nextShape = fallingShape
+            nextShape!.moveTo(column: PreviewColumn, row: PreviewRow)
+            endGame()
+            return(nil, nil)
+        }
+        
         return(fallingShape, nextShape)
+    }
+    
+    func detectIllegalPlacement() -> Bool {
+        guard let shape = fallingShape else {
+            return false
+        }
+        
+        for block in shape.blocks {
+            if block.column < 0 || block.column >= NumColumns
+                || block.row < 0 || block.row >= NumRows {
+                return true
+            } else if blockArray[block.column, block.row] != nil {
+                return true
+            }
+        }
+        
+        return false
     }
 }
 
