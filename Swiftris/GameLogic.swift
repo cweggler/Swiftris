@@ -89,6 +89,38 @@ class GameLogic {
         return false
     }
     
+    func settleShape() {
+        guard let shape = fallingShape else {
+            return
+        }
+        
+        for block in shape.blocks {
+            blockArray[block.column, block.row] = block
+        }
+        
+        fallingShape = nil
+        delegate?.gameShapeDidLand(swiftris: self)
+    }
+    
+    func detectTouch() -> Bool {
+        guard let shape = fallingShape else {
+            return false
+        }
+        
+        for bottomBlock in shape.bottomBlocks {
+            if bottomBlock.row == NumRows - 1
+                || blockArray[bottomBlock.column, bottomBlock.row + 1] != nil {
+                    return true
+            }
+        }
+        
+        return false
+    }
+    
+    func endGame() {
+        delegate?.gameDidEnd(swiftris: self)
+    }
+    
     func dropShape() {
         guard let shape = fallingShape else {
             return
