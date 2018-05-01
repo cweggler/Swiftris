@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GameLogicDelegate {
     var scene: GameScene!
     var swiftris: GameLogic!
 
@@ -27,20 +27,12 @@ class GameViewController: UIViewController {
         scene.tick = didTick
         
         swiftris = GameLogic()
+        swiftris.delegate = self
         swiftris.beginGame()
         
         
         // Present the scene.
         skView.presentScene(scene)
-        
-        scene.addPreviewShapeToScene(shape: swiftris.nextShape!){
-            self.swiftris.nextShape?.moveTo(column: StartingColumn, row: StartingRow)
-            self.scene.movePreviewShape(shape: self.swiftris.nextShape!){
-                let nextShapes = self.swiftris.newShape()
-                self.scene.startTicking()
-                self.scene.addPreviewShapeToScene(shape: nextShapes.nextShape!) {}
-            }
-        }
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -48,7 +40,57 @@ class GameViewController: UIViewController {
     }
     
     func didTick() {
-        swiftris.fallingShape?.lowerShapeByOneRow()
+        swiftris.letShapeFall()
+    }
+    
+    func nextShape() {
+        
+        let newShapes = swiftris.newShape()
+        guard let fallingShape = newShapes.fallingShape else {
+            return
+        }
+        
+        self.scene.addPreviewShapeToScene(shape: newShapes.nextShape!, completion: {})
+        
+        self.scene.movePreviewShape(shape: fallingShape) {
+            
+            self.view.isUserInteractionEnabled = true
+            self.scene.startTicking()
+        }
+    }
+    
+    func gameDidBegin(swiftris: GameLogic) {
+        // the following is false when restarting a new game
+        if swiftris.nextShape != nil && swiftris.nextShape!.blocks[0].sprite == nil {
+            scene.addPreviewShapeToScene(shape: swiftris.nextShape!) {
+                self.nextShape()
+            }
+        } else {
+            nextShape()
+        }
+    }
+    
+    func gameDidEnd(swiftris: GameLogic) {
+        
+        view.isUserInteractionEnabled = false
+        scene.stopTicking()
+    }
+    
+    func gameDidLevelUp(swiftris: GameLogic) {
+        <#code#>
+    }
+    
+    func gameShapeDidDrop(swiftris: GameLogic) {
+        <#code#>
+    }
+    
+    func gameShapeDidLand(swiftris: GameLogic) {
+        
+        scene.stopTicking()
+        nextShape()
+    }
+    
+    func gameShapeDidMove(swiftris: GameLogic) {
         scene.redrawShape(shape: swiftris.fallingShape!, completion: {})
     }
 }
