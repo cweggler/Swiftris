@@ -88,6 +88,82 @@ class GameLogic {
         
         return false
     }
+    
+    func dropShape() {
+        guard let shape = fallingShape else {
+            return
+        }
+        
+        while detectIllegalPlacement() == false {
+            shape.lowerShapeByOneRow()
+        }
+        
+        shape.raiseShapeByOneRow()
+        delegate?.gameShapeDidDrop(swiftris: self)
+    }
+    
+    func letShapeFall() {
+        guard let shape = fallingShape else {
+            return 
+        }
+        
+        shape.lowerShapeByOneRow()
+        if detectIllegalPlacement() {
+            shape.raiseShapeByOneRow()
+            if detectIllegalPlacement() {
+                endGame()
+            } else {
+                settleShape()
+            }
+        } else {
+            delegate?.gameShapeDidDrop(swiftris: self)
+            if detectTouch() {
+                settleShape()
+            }
+        }
+    }
+
+    func rotateShape() {
+        guard let shape = fallingShape else {
+            return
+        }
+        
+        shape.rotateClockwise()
+        guard detectIllegalPlacement() == false else {
+            shape.rotateCounterClockwise()
+            return
+        }
+        
+        delegate?.gameShapeDidMove(swiftris: self)
+    }
+    
+    func moveShapeLeft() {
+        guard let shape = fallingShape else {
+            return
+        }
+        
+        shape.shiftLeftByOneColumn()
+        guard detectIllegalPlacement() == false else {
+            shape.shiftRightByOneColumn()
+            return
+        }
+        
+        delegate?.gameShapeDidMove(swiftris: self)
+    }
+    
+    func moveShapeRight() {
+        guard let shape = fallingShape else {
+            return
+        }
+        
+        shape.shiftRightByOneColumn()
+        guard detectIllegalPlacement() == false else {
+            shape.shiftLeftByOneColumn()
+            return
+        }
+        
+        delegate?.gameShapeDidMove(swiftris: self)
+    }
 }
 
 
