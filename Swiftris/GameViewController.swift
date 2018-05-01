@@ -65,6 +65,35 @@ class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecogniz
             panPointReference = currentPoint
         }
     }
+    
+    @IBAction func didSwipe(_ sender: UISwipeGestureRecognizer) {
+        
+        swiftris.dropShape()
+        
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        return true
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        if gestureRecognizer is UISwipeGestureRecognizer {
+            
+            if otherGestureRecognizer is UIPanGestureRecognizer {
+                    return true
+            }
+        } else if gestureRecognizer is UIPanGestureRecognizer {
+            
+            if otherGestureRecognizer is UITapGestureRecognizer {
+                    return true
+            }
+        }
+        
+        return false
+    }
+    
     func didTick() {
         swiftris.letShapeFall()
         scene.redrawShape(shape: swiftris.fallingShape!, completion: {})
@@ -111,6 +140,10 @@ class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecogniz
     
     func gameShapeDidDrop(swiftris: GameLogic) {
         
+        scene.stopTicking()
+        scene.redrawShape(shape: swiftris.fallingShape!) {
+            swiftris.letShapeFall()
+        }
     }
     
     func gameShapeDidLand(swiftris: GameLogic) {
