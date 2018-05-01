@@ -168,8 +168,17 @@ class Shape: Hashable, CustomStringConvertible {
         orientation = newOrientation
     }
     
+    final func shiftBy(columns: Int, rows: Int){
+        self.column += columns
+        self.row += rows
+        for block in blocks {
+            block.column += columns
+            block.row += rows
+        }
+    }
+    
     final func lowerShapeByOneRow() {
-        shiftBy(columns:0, rows:1)
+        shiftBy(columns: 0, rows: 1)
     }
     
     final func raiseShapeByOneRow() {
@@ -182,15 +191,6 @@ class Shape: Hashable, CustomStringConvertible {
     
     final func shiftLeftByOneColumn() {
         shiftBy(columns: -1, rows: 0)
-    }
-    
-    final func shiftBy(columns: Int, rows: Int){
-        self.column += columns
-        self.row += rows
-        for block in blocks {
-            block.column += columns
-            block.row += rows
-        }
     }
     
     final func moveTo(column:Int, row:Int){

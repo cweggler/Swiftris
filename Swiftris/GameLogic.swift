@@ -208,8 +208,8 @@ class GameLogic {
         guard let shape = fallingShape else {
             return 
         }
-        
         shape.lowerShapeByOneRow()
+        
         if detectIllegalPlacement() {
             shape.raiseShapeByOneRow()
             if detectIllegalPlacement() {

@@ -39,8 +39,13 @@ class GameViewController: UIViewController, GameLogicDelegate {
         return true
     }
     
+    @IBAction func didTap(_ sender: UITapGestureRecognizer) {
+        
+    }
+    
     func didTick() {
         swiftris.letShapeFall()
+        scene.redrawShape(shape: swiftris.fallingShape!, completion: {})
     }
     
     func nextShape() {
@@ -60,7 +65,9 @@ class GameViewController: UIViewController, GameLogicDelegate {
     }
     
     func gameDidBegin(swiftris: GameLogic) {
+        
         // the following is false when restarting a new game
+        
         if swiftris.nextShape != nil && swiftris.nextShape!.blocks[0].sprite == nil {
             scene.addPreviewShapeToScene(shape: swiftris.nextShape!) {
                 self.nextShape()
@@ -77,11 +84,11 @@ class GameViewController: UIViewController, GameLogicDelegate {
     }
     
     func gameDidLevelUp(swiftris: GameLogic) {
-        <#code#>
+        
     }
     
     func gameShapeDidDrop(swiftris: GameLogic) {
-        <#code#>
+        
     }
     
     func gameShapeDidLand(swiftris: GameLogic) {
