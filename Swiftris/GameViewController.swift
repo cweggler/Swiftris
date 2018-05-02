@@ -12,9 +12,12 @@ import SpriteKit
 class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecognizerDelegate {
     var scene: GameScene!
     var swiftris: GameLogic!
-    
     var panPointReference: CGPoint?
-
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var levelLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,6 +87,7 @@ class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecogniz
             if otherGestureRecognizer is UIPanGestureRecognizer {
                     return true
             }
+            
         } else if gestureRecognizer is UIPanGestureRecognizer {
             
             if otherGestureRecognizer is UITapGestureRecognizer {
@@ -96,7 +100,6 @@ class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecogniz
     
     func didTick() {
         swiftris.letShapeFall()
-        scene.redrawShape(shape: swiftris.fallingShape!, completion: {})
     }
     
     func nextShape() {
@@ -153,6 +156,6 @@ class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecogniz
     }
     
     func gameShapeDidMove(swiftris: GameLogic) {
-        scene.redrawShape(shape: swiftris.fallingShape!, completion: {})
+        scene.redrawShape(shape: swiftris.fallingShape!) {}
     }
 }

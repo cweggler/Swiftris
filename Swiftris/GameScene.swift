@@ -157,7 +157,7 @@ class GameScene: SKScene {
             let moveTo = pointforColumn(column: block.column, row: block.row)
             let moveToAction: SKAction = SKAction.move(to: moveTo, duration: 0.2)
             moveToAction.timingMode = .easeOut
-            sprite.run(SKAction.group([moveToAction, SKAction.fadeAlpha(to: 1.0, duration: 0.2)]), completion: {})
+            sprite.run(SKAction.group([moveToAction, SKAction.fadeAlpha(to: 1.0, duration: 0.1)]), completion: {})
         }
         run(SKAction.wait(forDuration: 0.2), completion: completion)
     }
@@ -174,7 +174,7 @@ class GameScene: SKScene {
         for block in shape.blocks {
             let sprite = block.sprite!
             let moveTo = pointforColumn(column: block.column, row: block.row)
-            let moveToAction: SKAction = SKAction.move(to: moveTo, duration: 0.05)
+            let moveToAction: SKAction = SKAction.move(to: moveTo, duration: 0.6)
             moveToAction.timingMode = .easeOut
             
             if block == shape.blocks.last {
