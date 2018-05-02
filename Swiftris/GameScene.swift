@@ -201,7 +201,7 @@ class GameScene: SKScene {
                 let sprite = block.sprite!
                 let delay = (TimeInterval(columnIdx) * 0.05) + (TimeInterval(blockIdx) * 0.05)
                 let duration = TimeInterval(((sprite.position.y - newPosition.y) / BlockSize) * 0.1)
-                let moveAction = SKAction.moveTo(newPosition, duration: duration)
+                let moveAction = SKAction.move(to: newPosition, duration: duration)
                 moveAction.timingMode = .easeOut
                 sprite.run(
                     SKAction.sequence([
@@ -223,7 +223,7 @@ class GameScene: SKScene {
                 
                 let randomDuration = TimeInterval(arc4random_uniform(2)) + 0.5
                 
-                var startAngle = CGFloat(M_PI)
+                var startAngle = CGFloat(Double.pi)
                 var endAngle = startAngle * 2
                 if goLeft {
                     
