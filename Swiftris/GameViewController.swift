@@ -9,6 +9,11 @@
 import UIKit
 import SpriteKit
 
+/**
+    The GameViewController class will be responsible for
+    handling user input and handling interactions between
+    the GameScene and GameLogic classes
+ */
 class GameViewController: UIViewController, GameLogicDelegate, UIGestureRecognizerDelegate {
     var scene: GameScene!
     var swiftris: GameLogic!

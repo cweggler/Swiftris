@@ -8,14 +8,21 @@
 
 import SpriteKit
 
-let BlockSize:CGFloat = 20.0 // explain variables
+let BlockSize:CGFloat = 20.0                //
 let TickLengthLevelOne = TimeInterval(600)
+
+/**
+    The GameScene class is responsible for displaying everything
+    in the Swiftris app. It renders the Tetrominos, background and
+    gameboard
+*/
 
 class GameScene: SKScene {
     
-    let gameLayer = SKNode()
-    let shapeLayer = SKNode()
-    let LayerPosition = CGPoint(x: 6, y: -6)
+    let gameLayer = SKNode()  // creates a baseline to draw game designs
+    let shapeLayer = SKNode() // creates a baseline to draw the shapes on
+    let LayerPosition = CGPoint(x: 6, y: -6) // creates the point to show
+                                             // the extent of other SKNode()
     
     var tick:(() -> ())?
     var tickLengthMillis = TickLengthLevelOne
@@ -23,6 +30,12 @@ class GameScene: SKScene {
     
     var textureCache = Dictionary<String, SKTexture>()
     
+    /**
+        This part initializes the GameScene object
+        The 'required' part means this init must be implemented by every subclass of this class
+        The fatalError part is the message that should show if
+        initializing fails
+    */
     required init(coder aDecoder: NSCoder) {
         fatalError("NSCoder not supported")
     }
@@ -31,20 +44,26 @@ class GameScene: SKScene {
         super.init(size: size)
         
         
-        anchorPoint = CGPoint(x: 0, y: 1.0)
+        anchorPoint = CGPoint(x: 0, y: 1.0) // anchor pt is now in top
+                                            // left corner of the screen
         
-        
+        // Set the background as a SKNode from SpriteKit and make
+        // the background image in Assets show up
         let background = SKSpriteNode(imageNamed: "background")
         
+        // centers the background at middle, far left 0,0
         background.position = CGPoint(x: 0, y: 0)
         
+        // makes the anchorpoint for image to be upper left corner
         background.anchorPoint = CGPoint(x: 0, y: 1.0)
         
+        // Adds background as a node
         addChild(background)
         
+        // Adds gameLayer as a node
         addChild(gameLayer)
         
-        let gameBoardTexture = SKTexture(imageNamed: "gameboard")
+        let gameBoardTexture = SKTexture(imageNamed: "gameboard2")
         let gameBoard = SKSpriteNode(texture: gameBoardTexture, size: CGSize(width: BlockSize * CGFloat(NumColumns), height: BlockSize * CGFloat(NumRows)))
         
         gameBoard.anchorPoint = CGPoint(x: 0, y: 1.0)
@@ -62,9 +81,9 @@ class GameScene: SKScene {
     }
     
     /**
-     This function does...
-     
+     By default, the update function won't do anything. The scene subclasses should override this method and perform any necessary updates to the scene.
      */
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
